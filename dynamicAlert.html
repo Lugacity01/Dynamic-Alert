@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Alerts with JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .alert {
+      padding: 15px;
+      background-color: #4CAF50; /* Green color */
+      color: #fff; /* White text */
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none; /* Hidden by default */
+    }
+  </style>
+</head>
+<body>
+
+<div class="alert" id="dynamicAlert">
+  This is a dynamic alert!
+</div>
+
+<script>
+  // Function to show the dynamic alert
+  function showDynamicAlert(message) {
+    var alert = document.getElementById("dynamicAlert");
+    alert.innerText = message;
+    alert.style.display = "block";
+  }
+
+  // Function to hide the dynamic alert
+  function hideDynamicAlert() {
+    var alert = document.getElementById("dynamicAlert");
+    alert.style.display = "none";
+  }
+
+  // Show the dynamic alert with a custom message
+  showDynamicAlert("Welcome to Dynamic Alerts!");
+
+  // Set up an interval to change the alert message every 3 seconds
+  var messages = [
+    "Software Development",
+    "Frontend Development",
+    "BAckend Development",
+    "Fullstack Develoment"
+  ];
+
+  var index = 0;
+
+  setInterval(function () {
+    showDynamicAlert(messages[index]);
+    index = (index + 1) % messages.length;
+    // Hide the dynamic alert after 2 seconds
+    setTimeout(hideDynamicAlert, 2000);
+  }, 3000);
+</script>
+
+</body>
+</html>
